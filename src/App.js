@@ -8,7 +8,7 @@ function App() {
   const[transactions, setTransactions] = useState([]);
   useEffect(()=>{
     getTransactions().then(setTransactions)
-  },[]);
+  },[name]);
   
   async function getTransactions(){
     const url = process.env.REACT_APP_API_URL+'/transactions';
@@ -20,7 +20,7 @@ function App() {
     ev.preventDefault();
     const url = process.env.REACT_APP_API_URL+'/transaction';
     const price = name.split(' ')[0];
-    
+
     fetch(url, {
       method: 'POST',
       headers: {'Content-type':'application/json'},
